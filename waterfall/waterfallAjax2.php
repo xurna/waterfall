@@ -24,15 +24,13 @@
 			 width: 200px;
 			 top: 0px;
 			 left: 0px;
-
-
 		}
 		img { width: 100%; } 
 	</style>
 	</head>
 <body >
 	<div id="container" class="container">
-		<!-- <div class="imgShow"><img src=""/></div>  -->
+		<div class="imgShow"><img src=""/></div> 
 	</div>
 	<input type="hidden" name="currentPage" id="currentPage" value="1">
 </body>
@@ -54,15 +52,12 @@ function getImage(){
 			 var data = result;
 			 $.each(data,function(index,value){
 			 	html = " <div class='imgShow'><img src='uploads/"+ value.photo+"'/> </div> ";
-			 	
 				$(".container").append(html);
 				var water = new WaterFall("container");
 					water.show();
 			 });
-			 $("#currentPage").val(currentPage+1);	
-			
+			 $("#currentPage").val(currentPage+1);				
 		}
-
 	})
 }
 
@@ -77,9 +72,13 @@ window.onload = function(){
 	getImage();	
 }
 
+ var timer;
 window.onresize = function(){
-	var water = new WaterFall("container");
-	water.show();
+	clearTimeout(timer);
+	timer = setTimeout(function(){
+		var water = new WaterFall("container");
+		water.show()
+	},300);
 }
 
 </script>

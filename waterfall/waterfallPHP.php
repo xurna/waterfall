@@ -65,9 +65,13 @@ window.onload = function(){
 /**
  * 窗口改变时重排渲染
  */
+ var timer;
 window.onresize = function(){
-	var water = new WaterFall("container");
-	water.show();
+	clearTimeout(timer);
+	timer = setTimeout(function(){
+		var water = new WaterFall("container");
+		water.show()
+	},300);
 }
 
 </script>
